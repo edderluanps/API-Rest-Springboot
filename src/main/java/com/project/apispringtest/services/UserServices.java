@@ -4,11 +4,12 @@ import com.project.apispringtest.domain.User;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.project.apispringtest.repositories.UserRepositories;
-import org.springframework.stereotype.Component;
+import com.project.apispringtest.services.exception.ObjectNotFoundException;
+import java.util.Optional;
 
 @Service
-@Component
 public class UserServices {
     
     @Autowired
@@ -19,5 +20,14 @@ public class UserServices {
         return urepo.findAll();
         
     }
-    
+
+public User findById(String id) {
+		Optional<User> obj = urepo.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+	}
+
+	public User insert(User obj) {
+		return urepo.insert(obj);
+	}
+
 }
