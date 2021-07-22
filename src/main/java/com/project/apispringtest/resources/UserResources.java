@@ -1,5 +1,6 @@
 package com.project.apispringtest.resources;
 
+import com.project.apispringtest.domain.Post;
 import com.project.apispringtest.domain.User;
 import com.project.apispringtest.dto.UserDTO;
 import com.project.apispringtest.services.UserServices;
@@ -49,11 +50,19 @@ public class UserResources {
         return ResponseEntity.noContent().build();
     }
     
-	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
- 	public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) {
-		User obj = service.fromDTO(objDto);
-		obj.setId(id);
-		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) {
+        User obj = service.fromDTO(objDto);
+        obj.setId(id);
+        obj = service.update(obj);
+        return ResponseEntity.noContent().build();
     }
+    
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
+
+    }
+
 }
