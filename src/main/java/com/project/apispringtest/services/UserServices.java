@@ -14,28 +14,28 @@ import java.util.Optional;
 public class UserServices {
     
     @Autowired
-    private UserRepositories urepo;
+    private UserRepositories repo;
 
-    public List<User> findAll(){
-        
-        return urepo.findAll();
-        
+    public List<User> findAll() {
+        return repo.findAll();
     }
 
     public User findById(String id) {
-        
-        Optional<User> obj = urepo.findById(id);
-        
+        Optional<User> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
     public User insert(User obj) {
-        
-        return urepo.insert(obj);
+        return repo.insert(obj);
     }
     
-    public User fromDTO(UserDTO objdto){
-        return new User(objdto.getId(), objdto.getName(), objdto.getEmail());
+    public void delete(String id){
+        findById(id);
+        repo.deleteById(id);
+    }
+
+    public User fromDTO(UserDTO objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 
 }
