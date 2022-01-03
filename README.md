@@ -4,7 +4,7 @@ API Spring Boot + MongoDB , desenvolvido para o curso de Desenvolvimento Complet
 ## Instalação
 1- Baixe o ZIP do projeto
 
-2- Abra sua IDE, selecione o arquivo e importe o projeto.
+2- Abra sua IDE, procure a opção de importar projeto, selecione o arquivo zip e importe o projeto para sua IDE.
 
 3- Ative o banco de dados MongoDB via cmd (digite 'mongod' sem as aspas no CMD e aguarde a confirmação da porta 27017).
 
