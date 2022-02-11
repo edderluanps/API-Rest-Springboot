@@ -1,5 +1,14 @@
-# Springboot-API-Rest
+# Sobre
 API Spring Boot + MongoDB , desenvolvido para o curso de Desenvolvimento Completo em Java
+
+# Tecnologias
+
+## Back end
+* Java (JDK 8)
+* Spring Boot
+
+## Banco de dados
+* NoSQL (MongoDB)
 
 ## Instalação
 1- Baixe o ZIP do projeto
